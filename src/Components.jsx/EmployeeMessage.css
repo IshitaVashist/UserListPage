@@ -1,0 +1,7 @@
+/* Error Message Styling */
+.error-message {
+    color: #d9534f; /* Red error text */
+    font-weight: bold;
+    text-align: center;
+  }
+  
