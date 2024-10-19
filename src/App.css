@@ -108,3 +108,56 @@ input:focus {
   outline: none;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Slight shadow on focus */
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px) rotate(-30deg) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
+}
+
+@keyframes blueShift {
+  0%, 100% {
+    color: #0080ff;
+  }
+  50% {
+    color: #00bfff;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+.animate-in .animate-letter {
+  animation: 
+    fadeInUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+    blueShift 4s ease infinite;
+  animation-delay: calc(var(--index) * 0.1s);
+  opacity: 0;
+}
+
+.animate-loop .animate-letter {
+  animation: 
+    float 2s ease-in-out infinite,
+    blueShift 4s ease infinite;
+  animation-delay: calc(var(--index) * 0.1s), 0s;
+}
+
+.animate-letter {
+  --index: 0;
+  display: inline-block;
+  transform-origin: 50% 100%;
+  color: #0080ff;
+  text-shadow: 0 0 10px rgba(0, 128, 255, 0.5);
+}
+;

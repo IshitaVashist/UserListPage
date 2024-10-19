@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import EmployeeRow from "./Components.jsx/EmployeeRow";
 import EmployeeForm from "./Components.jsx/EmployeeForm";
 import ErrorMessage from "./Components.jsx/EmployeeMessage";
+import Animation from "./Components.jsx/Animation";
 import './App.css';
 
 const EmployeeTable = () => {
@@ -71,7 +72,7 @@ const EmployeeTable = () => {
 
   return (
     <div>
-      <h1>USER LIST PAGE</h1>
+      <h1> <Animation> </Animation></h1>
 
       {/* Error Message */}
       {error && <ErrorMessage error={error} />}
