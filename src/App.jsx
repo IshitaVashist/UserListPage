@@ -80,11 +80,11 @@ const EmployeeTable = () => {
       <table border="1" style={{ marginTop: "20px", width: "100%" }}>
         <thead>
           <tr>
-            <th>First Name</th>
-            <th>Full Name</th>
-            <th>User Name</th>
-            <th>Marital Status</th>
-            <th>Employee Status</th>
+            <th>First-Name</th>
+            <th>Full-Name</th>
+            <th>UserName</th>
+            <th>Marital-Status</th>
+            <th>Employee-Status</th>
             <th>Actions</th>
           </tr>
         </thead>
