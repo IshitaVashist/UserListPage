@@ -1,23 +1,23 @@
 import React from "react";
 
-
 const EmployeeRow = ({
   employee,
   isEditing,
-  handleEdit,
-  handleSave,
-  handleDelete,
+  onEdit,
+  onDelete,
+  onSave,
+  onCancel,
   tempEmployee,
   setTempEmployee,
 }) => {
-  const rowStyle = employee.isFounder === "Y" ? { backgroundColor: "red" } : {};
-
   const handleEditChange = (e) => {
-    setTempEmployee({ ...tempEmployee, [e.target.name]: e.target.value });
+    const updatedEmployee = { ...tempEmployee, [e.target.name]: e.target.value };
+    setTempEmployee(updatedEmployee);
   };
 
   return (
-    <tr style={rowStyle}>
+    <tr>
+      {/* Editable Row */}
       {isEditing ? (
         <>
           <td>
@@ -26,6 +26,7 @@ const EmployeeRow = ({
               name="firstName"
               value={tempEmployee.firstName}
               onChange={handleEditChange}
+              required
             />
           </td>
           <td>
@@ -34,6 +35,7 @@ const EmployeeRow = ({
               name="fullName"
               value={tempEmployee.fullName}
               onChange={handleEditChange}
+              required
             />
           </td>
           <td>
@@ -42,6 +44,7 @@ const EmployeeRow = ({
               name="userName"
               value={tempEmployee.userName}
               onChange={handleEditChange}
+              required
             />
           </td>
           <td>
@@ -50,6 +53,7 @@ const EmployeeRow = ({
               name="maritalStatus"
               value={tempEmployee.maritalStatus}
               onChange={handleEditChange}
+              required
             />
           </td>
           <td>
@@ -58,33 +62,25 @@ const EmployeeRow = ({
               name="employeeStatus"
               value={tempEmployee.employeeStatus}
               onChange={handleEditChange}
+              required
             />
           </td>
           <td>
-            <select
-              name="isFounder"
-              value={tempEmployee.isFounder}
-              onChange={handleEditChange}
-            >
-              <option value="N">Not Founder</option>
-              <option value="Y">Founder</option>
-            </select>
-          </td>
-          <td>
-            <button onClick={handleSave}>Save</button>
-            <button onClick={handleEdit}>Cancel</button>
+            <button onClick={() => onSave(tempEmployee)}>Save</button>
+            <button onClick={onCancel}>Cancel</button>
           </td>
         </>
       ) : (
         <>
-          <td>{employee.firstName}</td>
-          <td>{employee.fullName}</td>
-          <td>{employee.userName}</td>
-          <td>{employee.maritalStatus}</td>
-          <td>{employee.employeeStatus}</td>
+          {/* Non-editable Row */}
+          <td>{employee.firstName || <span style={{ color: "red" }}>⚠ Empty</span>}</td>
+          <td>{employee.fullName || <span style={{ color: "red" }}>⚠ Empty</span>}</td>
+          <td>{employee.userName || <span style={{ color: "red" }}>⚠ Empty</span>}</td>
+          <td>{employee.maritalStatus || <span style={{ color: "red" }}>⚠ Empty</span>}</td>
+          <td>{employee.employeeStatus || <span style={{ color: "red" }}>⚠ Empty</span>}</td>
           <td>
-            <button onClick={handleEdit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={onEdit}>Edit</button>
+            <button onClick={onDelete}>Delete</button>
           </td>
         </>
       )}
